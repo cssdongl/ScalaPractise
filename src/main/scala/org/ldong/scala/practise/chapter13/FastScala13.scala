@@ -4,7 +4,7 @@ import scala.collection.immutable
 import scala.collection.immutable._
 
 /**
-  * @author dongliang@mail.jj.com
+  * @author cssdongl@gmail.com
   * @date 2016/11/29 15:46  
   * @version V1.0
   */

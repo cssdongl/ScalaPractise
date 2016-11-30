@@ -3,7 +3,7 @@ package org.ldong.scala.practise.chapter5
 import scala.beans.BeanProperty
 
 /**
-  * @author dongliang@mail.jj.com
+  * @author cssdongl@gmail.com
   * @date 2016/11/24 14:47  
   * @version V1.0
   */

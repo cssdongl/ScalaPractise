@@ -2,7 +2,7 @@ package org.ldong.scala.practise.chapter12
 
 import scala.math._
 /**
-  * @author dongliang@mail.jj.com
+  * @author cssdongl@gmail.com
   * @date 2016/11/29 16:59  
   * @version V1.0
   */

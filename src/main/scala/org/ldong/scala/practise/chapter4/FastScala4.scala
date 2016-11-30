@@ -7,7 +7,7 @@ import scala.collection.{immutable, mutable}
 import scala.io.Source
 
 /**
-  * @author dongliang@mail.jj.com
+  * @author cssdongl@gmail.com
   * @ate 2016/11/19 15:00
   * @version V1.0
   * @description the fast scala chapter 4

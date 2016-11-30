@@ -4,7 +4,7 @@ import scala.math.BigInt._
 import scala.util.Random;
 
 /**
-  * @author dongliang@mail.jj.com
+  * @author cssdongl@gmail.com
   * @date 2016/11/19 10:00
   * @version V1.0
   * @Description the first chapter for study scala

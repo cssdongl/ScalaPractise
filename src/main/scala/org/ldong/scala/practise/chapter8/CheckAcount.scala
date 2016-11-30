@@ -1,7 +1,7 @@
 package org.ldong.scala.practise.chapter8
 
 /**
-  * @author dongliang@mail.jj.com
+  * @author cssdongl@gmail.com
   * @date 2016/11/25 11:25  
   * @version V1.0
   */

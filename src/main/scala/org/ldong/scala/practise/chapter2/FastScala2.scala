@@ -5,7 +5,7 @@ import java.net.URL
 import com.sun.org.apache.xerces.internal.util.URI.MalformedURIException
 
 /**
-  * @author dongliang@mail.jj.com
+  * @author cssdongl@gmail.com
   * @date 2016/11/19 10:56
   * @version V1.0
   * @description the fast scala chapter 2

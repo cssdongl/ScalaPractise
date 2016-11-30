@@ -6,7 +6,7 @@ import scala.collection.mutable._
 import scala.math.random
 
 /**
-  * @author dongliang@mail.jj.com
+  * @author cssdongl@gmail.com
   * @date 2016/11/19 13:36  
   * @version V1.0
   * @description the fast scala chapter 3
