@@ -1,4 +1,4 @@
-package org.ldong.scala.scala.practise.chapter4
+package org.ldong.scala.practise.chapter4
 
 import java.util.Scanner
 

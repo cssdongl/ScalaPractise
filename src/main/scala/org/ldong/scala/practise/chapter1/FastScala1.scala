@@ -1,4 +1,4 @@
-package org.ldong.scala.scala.practise.chapter1
+package org.ldong.scala.practise.chapter1
 
 import scala.math.BigInt._
 import scala.util.Random;

@@ -1,4 +1,4 @@
-package org.ldong.scala.scala.practise.chapter5
+package org.ldong.scala.practise.chapter5
 
 import scala.beans.BeanProperty
 

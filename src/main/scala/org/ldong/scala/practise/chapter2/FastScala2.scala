@@ -1,4 +1,4 @@
-package org.ldong.scala.scala.practise.chapter2
+package org.ldong.scala.practise.chapter2
 
 import java.net.URL
 

@@ -1,4 +1,4 @@
-package org.ldong.scala.scala.practise.chapter13
+package org.ldong.scala.practise.chapter13
 
 import scala.collection.immutable
 import scala.collection.immutable._

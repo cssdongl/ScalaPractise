@@ -1,4 +1,4 @@
-package org.ldong.scala.scala.practise.chapter3
+package org.ldong.scala.practise.chapter3
 
 import java.awt.datatransfer._
 

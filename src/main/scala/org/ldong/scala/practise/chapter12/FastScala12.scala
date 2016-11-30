@@ -1,4 +1,4 @@
-package org.ldong.scala.scala.practise.chapter12
+package org.ldong.scala.practise.chapter12
 
 import scala.math._
 /**

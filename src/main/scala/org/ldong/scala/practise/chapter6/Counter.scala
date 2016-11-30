@@ -1,4 +1,4 @@
-package org.ldong.scala.scala.practise.chapter6
+package org.ldong.scala.practise.chapter6
 
 /**
   * @author dongliang@mail.jj.com
