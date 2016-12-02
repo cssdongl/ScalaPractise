@@ -34,6 +34,18 @@ class FastScala9 {
   def filterChars(filePath: String): Unit = {
     Source.fromFile(filePath).mkString.split("\\s+").filter(word => word.length > 12).foreach(println)
   }
+
+  def calculatePowOfTwo(filePath: String):Unit = {
+    val pw = new PrintWriter(filePath)
+    for(n <- 0 to 20){
+      val t = BigDecimal(2).pow(n)
+      pw.write(t.toString())
+      pw.write("\t\t")
+      pw.write((1/t).toString())
+      pw.write("\n")
+    }
+    pw.close()
+  }
 }
 
 object FastScala9 extends App {
@@ -41,4 +53,5 @@ object FastScala9 extends App {
   instance.reverseLines("C:\\testFiles\\aaaaa.txt")
   instance.repalceTabs("C:\\testFiles\\bbbbb.txt")
   instance.filterChars("C:\\testFiles\\cccc.txt")
+  instance.calculatePowOfTwo("C:\\testFiles\\dddd.txt")
 }
