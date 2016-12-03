@@ -9,7 +9,7 @@ import redis.clients.jedis.JedisPool
   * @version V1.0
   */
 object RedisClient {
-  val redisHost = "10.10.4.130"
+  val redisHost = "192.168.15.81"
   val redisPort = 6379
   val redisTimeout = 30000
   lazy val pool = new JedisPool(new GenericObjectPoolConfig(), redisHost, redisPort, redisTimeout)
