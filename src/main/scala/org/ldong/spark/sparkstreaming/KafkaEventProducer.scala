@@ -1,17 +1,13 @@
 package org.ldong.spark.sparkstreaming
 
-import java.util.Properties
-import scala.util.Properties
-import org.codehaus.jettison.json.JSONObject
+import java.util.{Properties, Random}
 import kafka.javaapi.producer.Producer
-import kafka.producer.KeyedMessage
-import kafka.producer.KeyedMessage
-import kafka.producer.ProducerConfig
-import java.util.Random
+import kafka.producer.{KeyedMessage, ProducerConfig}
+import org.codehaus.jettison.json.JSONObject
 
 /**
   * @author cssdongl@gmail.com
-  * @date 2016/12/3 16:00  
+  * @date 2016/12/3 16:00
   * @version V1.0
   */
 object KafkaEventProducer {
@@ -66,7 +62,7 @@ object KafkaEventProducer {
       producer.send(new KeyedMessage[String, String](topic, event.toString))
       println("Message sent: " + event)
 
-      Thread.sleep(2000)
+      Thread.sleep(5000)
     }
   }
 

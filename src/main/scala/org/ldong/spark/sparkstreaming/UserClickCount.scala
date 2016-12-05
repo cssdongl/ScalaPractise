@@ -50,7 +50,7 @@ object UserClickCount {
           val jedis = RedisClient.pool.getResource
           jedis.select(dbIndex)
           jedis.hincrBy(clickHashKey, uid, clickCount)
-          RedisClient.pool.returnResource(jedis)
+           RedisClient.pool.returnResource(jedis)
         })
       })
     })
