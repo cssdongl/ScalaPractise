@@ -29,6 +29,7 @@ object UserClickCount {
     val kafkaParams = Map[String, String](
       "metadata.broker.list" -> brokers, "serializer.class" -> "kafka.serializer.StringEncoder")
 
+    //the db index to save the data
     val dbIndex = 1
     val clickHashKey = "app::users::click"
 

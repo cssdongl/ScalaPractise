@@ -1,9 +1,7 @@
 package org.ldong.spark.sparkstreaming.redis
 
-import org.ldong.spark.sparkstreaming.redis.RedisClient
 import org.ldong.spark.sparkstreaming.redis.utils.JedisUtil
 import redis.clients.jedis._
-
 import scala.collection.JavaConversions
 
 /**
@@ -38,7 +36,7 @@ object JedisTest extends App {
   println(jedis.hget("app::users::click","AXCWEA"))
   println(jedis.hget("hashs", "entryKey"));
   println(jedis.hmget("hashs", "entryKey", "entryKey1","entryKey2"));
-  val map = RedisClient.pool.getResource.hgetAll("app::users::click")
+  val map = jedis.hgetAll("app::users::click")
   val scalaMap = JavaConversions.mapAsScalaMap(map)
   for ((k, v) <- scalaMap) {
     println("k is " + k + "v is " + v)
