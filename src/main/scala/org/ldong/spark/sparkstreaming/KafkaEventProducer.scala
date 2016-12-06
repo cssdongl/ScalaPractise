@@ -1,9 +1,11 @@
 package org.ldong.spark.sparkstreaming
 
 import java.util.{Properties, Random}
+
 import kafka.javaapi.producer.Producer
 import kafka.producer.{KeyedMessage, ProducerConfig}
 import org.codehaus.jettison.json.JSONObject
+import org.ldong.spark.common.PropertiesUtil
 
 /**
   * @author cssdongl@gmail.com
@@ -41,7 +43,7 @@ object KafkaEventProducer {
   // bin/kafka-topics.sh --zookeeper localhost:2181 --describe user_events
   def main(args: Array[String]): Unit = {
     val topic = "user_events"
-    val brokers = "192.168.15.81:9092"
+    val brokers = PropertiesUtil.getValue("BROKER_ADDRESS")
     val props = new Properties()
     props.put("metadata.broker.list", brokers)
     props.put("serializer.class", "kafka.serializer.StringEncoder")

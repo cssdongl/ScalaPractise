@@ -6,6 +6,7 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.apache.spark.streaming.kafka.KafkaUtils
 import org.ldong.spark.sparkstreaming.redis.RedisClient
 import kafka.serializer._
+import org.ldong.spark.common.PropertiesUtil
 
 /**
   * @author cssdongl@gmail.com
@@ -15,6 +16,7 @@ import kafka.serializer._
 object UserClickCount {
   def main(args: Array[String]): Unit = {
     var masterUrl = "local[1]"
+
     if (args.length > 0) {
       masterUrl = args(0)
     }
@@ -25,7 +27,7 @@ object UserClickCount {
 
     // Kafka configurations
     val topics = Set("user_events")
-    val brokers = "192.168.15.81:9092"
+    val brokers = PropertiesUtil.getValue("BROKER_ADDRESS")
     val kafkaParams = Map[String, String](
       "metadata.broker.list" -> brokers, "serializer.class" -> "kafka.serializer.StringEncoder")
 
