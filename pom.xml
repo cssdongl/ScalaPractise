@@ -125,7 +125,6 @@
             <artifactId>hadoop-yarn-api</artifactId>
             <version>2.6.0-cdh5.4.0</version>
             <type>jar</type>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -133,7 +132,6 @@
             <artifactId>hadoop-yarn-applications-distributedshell</artifactId>
             <version>2.6.0-cdh5.4.0</version>
             <type>jar</type>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -141,7 +139,6 @@
             <artifactId>hadoop-yarn-server-resourcemanager</artifactId>
             <version>2.6.0-cdh5.4.0</version>
             <type>jar</type>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -149,14 +146,12 @@
             <artifactId>hadoop-yarn-applications-unmanaged-am-launcher</artifactId>
             <version>2.6.0-cdh5.4.0</version>
             <type>jar</type>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.hbase</groupId>
             <artifactId>hbase-client</artifactId>
             <version>1.0.0-cdh5.4.0</version>
             <type>jar</type>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -164,7 +159,6 @@
             <artifactId>hbase-common</artifactId>
             <version>1.0.0-cdh5.4.0</version>
             <type>jar</type>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -172,7 +166,6 @@
             <artifactId>hbase-server</artifactId>
             <version>1.0.0-cdh5.4.0</version>
             <type>jar</type>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -180,7 +173,6 @@
             <artifactId>hbase-protocol</artifactId>
             <version>1.0.0-cdh5.4.0</version>
             <type>jar</type>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -188,7 +180,6 @@
             <artifactId>hbase-prefix-tree</artifactId>
             <version>1.0.0-cdh5.4.0</version>
             <type>jar</type>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -196,13 +187,13 @@
             <artifactId>hbase-hadoop-compat</artifactId>
             <version>1.0.0-cdh5.4.0</version>
             <type>jar</type>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.apache.htrace</groupId>
             <artifactId>htrace-core</artifactId>
             <version>3.1.0-incubating</version>
+            <type>jar</type>
         </dependency>
 
         <dependency>
@@ -210,7 +201,6 @@
             <artifactId>hbase-hadoop2-compat</artifactId>
             <version>1.0.0-cdh5.4.0</version>
             <type>jar</type>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
