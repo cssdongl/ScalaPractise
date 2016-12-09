@@ -1,16 +1,13 @@
 package org.ldong.spark.hbase
 
+import org.apache.hadoop.hbase.{HBaseConfiguration, HConstants}
 import org.apache.hadoop.hbase.client.Put
 import org.apache.hadoop.hbase.io.ImmutableBytesWritable
 import org.apache.hadoop.hbase.mapred.TableOutputFormat
 import org.apache.hadoop.hbase.util.Bytes
-import org.apache.hadoop.hbase.{HBaseConfiguration, HConstants}
 import org.apache.hadoop.mapred.JobConf
 import org.apache.spark.{SparkConf, SparkContext}
 import org.ldong.spark.common.PropertiesUtil
-import org.apache.hadoop.hbase.HBaseConfiguration
-
-import scala.collection.JavaConversions
 
 /**
   * @author cssdongl@gmail.com
@@ -47,6 +44,7 @@ object SparkWriteHbase extends App{
   jobConf.setOutputFormat(classOf[TableOutputFormat])
 
   val result = data.map { item =>
+    //here seems the \t as split char does not work after tried several times
     val Array(key,value) = item.split(",")
     val rowKey = key.reverse
     val put = new Put(Bytes.toBytes(rowKey))
