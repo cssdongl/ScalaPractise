@@ -43,6 +43,10 @@ class FastScala1 {
     println(xx.takeRight(2))
     println(xx.dropRight(3))
   }
+
+  def checkHasSupperCase(str:String):Boolean = {
+    str.exists(_.isUpper)
+  }
 }
 
 object FastScala1 extends App {
@@ -53,5 +57,6 @@ object FastScala1 extends App {
   test.convertRadix()
   test.getFirstLastChar("DongLiang")
   test.testStringAPI("DongLiang")
+  println(test.checkHasSupperCase("dongliang"))
 }
 
