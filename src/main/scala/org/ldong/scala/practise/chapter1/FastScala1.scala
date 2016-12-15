@@ -58,5 +58,8 @@ object FastScala1 extends App {
   test.getFirstLastChar("DongLiang")
   test.testStringAPI("DongLiang")
   println(test.checkHasSupperCase("dongliang"))
+
+  val x= "20" + "40"
+  println(x)
 }
 
