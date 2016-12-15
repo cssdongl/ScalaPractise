@@ -7,7 +7,7 @@ import org.apache.spark.{SparkConf, SparkContext}
   * @date 2016/12/15 11:49  
   * @version V1.0
   */
-object ColumnValueSum extends App {
+object ColumnValueAvg extends App {
   /**
     * ID,Name,ADDRESS,AGE
     * 001,zhangsan,chaoyang,20
@@ -34,8 +34,8 @@ object ColumnValueSum extends App {
     (accu1: (Int, Int), accu2: (Int, Int)) => (accu1._1 + accu2._1, accu1._2 + accu2._2)
   ).mapValues(x => (x._1 / x._2).toDouble).collect().foreach(println)
 
-  sc.stop()
-
   println("Sum and Avg calculate successfuly")
+
+  sc.stop()
 
 }
