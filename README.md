@@ -1,2 +1,2 @@
-# ScalaPractise
-personal scala practise and test.
+# SparkRelate
+personal spark practise and test.
