@@ -39,7 +39,7 @@ object CalculateJoin extends App {
 
   idAgeDF.filter(idAgeDF("age") > 23).show()
 
-  idAgeDF.select("age").show()
+  idAgeDF.select("age").take(2)
 
   sc.stop()
 }
