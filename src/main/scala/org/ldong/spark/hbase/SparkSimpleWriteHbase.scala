@@ -14,7 +14,7 @@ import org.ldong.spark.common.PropertiesUtil
   * @date 2016/12/9 18:07
   * @version V1.0
   */
-object SparkWriteHbase extends App{
+object SparkSimpleWriteHbase extends App{
   val conf = new SparkConf().setAppName("test").setMaster("local[2]")
   val sc = new SparkContext(conf)
 
