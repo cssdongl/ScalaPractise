@@ -63,7 +63,7 @@ object SparkStreamingWriteToHbase {
     }
 
     result.foreachRDD { rdd =>
-      rdd.saveAsNewAPIHadoopFile("", classOf[Text], classOf[Text], classOf[MultiTableOutputFormat], jobConf)
+      rdd.saveAsNewAPIHadoopFile("", classOf[ImmutableBytesWritable], classOf[Put], classOf[MultiTableOutputFormat], jobConf)
     }
 
     ssc.start()
@@ -77,6 +77,5 @@ object SparkStreamingWriteToHbase {
     put.addColumn(Bytes.toBytes("info"), Bytes.toBytes("count"), Bytes.toBytes(value))
     (new ImmutableBytesWritable(Bytes.toBytes(tableName)), put)
   }
-
 
 }
