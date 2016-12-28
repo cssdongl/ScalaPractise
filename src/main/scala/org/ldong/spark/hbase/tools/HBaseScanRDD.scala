@@ -1,4 +1,4 @@
-package org.ldong.spark.hbase
+package org.ldong.spark.hbase.tools
 
 import java.text.SimpleDateFormat
 import java.util.{ArrayList, Date}
@@ -10,10 +10,10 @@ import org.apache.hadoop.io.Writable
 import org.apache.hadoop.mapreduce.{InputSplit, Job, JobID}
 import org.apache.hadoop.security.UserGroupInformation
 import org.apache.hadoop.security.UserGroupInformation.AuthenticationMethod
+import org.apache.spark._
 import org.apache.spark.broadcast.Broadcast
 import org.apache.spark.deploy.SparkHadoopUtil
 import org.apache.spark.rdd.RDD
-import org.apache.spark._
 
 class HBaseScanRDD(sc: SparkContext,
                    @transient tableName: String,
