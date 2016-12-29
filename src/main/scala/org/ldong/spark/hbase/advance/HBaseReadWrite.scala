@@ -58,13 +58,11 @@ object HBaseReadWrite extends Serializable{
     keyStatsRDD.take(5).foreach(println)
 
     val jobConfig: JobConf = new JobConf(conf, this.getClass)
-    jobConfig.set("mapreduce.output.fileoutputformat.outputdir", "/user/user01/out")
     jobConfig.setOutputFormat(classOf[TableOutputFormat])
     jobConfig.set(TableOutputFormat.OUTPUT_TABLE, tableName)
     keyStatsRDD.map { case (k, v) => convertToPut(k, v) }.saveAsHadoopDataset(jobConfig)
 
   }
-  // convert rowkey, stats to put 
   def convertToPut(key: String, stats: StatCounter): (ImmutableBytesWritable, Put) = {
     val p = new Put(Bytes.toBytes(key))
     p.addColumn(cfStatsBytes, Bytes.toBytes("psimax"), Bytes.toBytes(stats.max))
