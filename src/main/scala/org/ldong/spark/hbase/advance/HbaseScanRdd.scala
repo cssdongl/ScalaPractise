@@ -34,10 +34,10 @@ object HbaseScanRdd {
 
     val hbaseContext = new HBaseContext(sc, conf)
 
-    var getRdd = hbaseContext.hbaseScanRDD(tableName, scan)
+    var hbaseRdd = hbaseContext.hbaseScanRDD(tableName, scan)
 
 
-    val rowKeyRdd = getRdd.map(tuple => tuple._1)
+    val rowKeyRdd = hbaseRdd.map(tuple => tuple._1)
     rowKeyRdd.foreach(key => println(Bytes.toString(key)))
 
     //method one
@@ -68,20 +68,25 @@ object HbaseScanRdd {
     //      }
     //    }
 
-    val resultRdd2 = getRdd.map(tuple => tuple._2).foreach { arraysList =>
-      var columnArrayNumPerKey = 0
+    val resultRdd2 = hbaseRdd.map(tuple => tuple._2).foreach { arraysList =>
       val scalaArraysList = JavaConversions.asScalaBuffer(arraysList)
       scalaArraysList.foreach { array =>
-        val cf = Bytes.toString(array._1)
-        val col = Bytes.toString(array._2)
-        val value = Bytes.toString(array._3)
+        val Array(cf,col,value) = Array(Bytes.toString(array._1),
+          Bytes.toString(array._2),Bytes.toString(array._3))
         println(cf + "_" + col + "_" + value)
-        columnArrayNumPerKey += 1
-        println("column array number for per row key  is " + columnArrayNumPerKey)
       }
     }
 
 
+    val resultRdd3 = hbaseRdd.map(tuple => tuple._2).map { arraysList =>
+      val scalaArraysList = JavaConversions.asScalaBuffer(arraysList)
+      scalaArraysList.foreach { array =>
+        val Array(cf,col,value) = Array(Bytes.toString(array._1),
+          Bytes.toString(array._2),Bytes.toString(array._3))
+        val key = cf + "_" + col
+        (key,value)
+      }
+    }
     sc.stop()
   }
 }
