@@ -47,7 +47,7 @@ class HBaseScanRDD(sc: SparkContext,
 
   override def getPartitions: Array[Partition] = {
 
-    addCreds
+//    addCreds
 
     val tableInputFormat = new TableInputFormat
     tableInputFormat.setConf(jobConfigBroadcast.value.value)
@@ -64,11 +64,11 @@ class HBaseScanRDD(sc: SparkContext,
 
   override def compute(theSplit: Partition, context: TaskContext): InterruptibleIterator[(Array[Byte], java.util.List[(Array[Byte], Array[Byte], Array[Byte])])] = {
 
-    addCreds
+//    addCreds
 
     val iter = new Iterator[(Array[Byte], java.util.List[(Array[Byte], Array[Byte], Array[Byte])])] {
 
-      addCreds
+//      addCreds
 
       val split = theSplit.asInstanceOf[NewHadoopPartition]
       logInfo("Input split: " + split.serializableHadoopSplit)
