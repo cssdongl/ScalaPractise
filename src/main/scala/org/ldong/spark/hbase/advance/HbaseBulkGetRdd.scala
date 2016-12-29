@@ -34,7 +34,7 @@ object HbaseBulkGetRdd {
 
     //here construct the rowkey bytes RDD for bulkGet
     val rdd = sc.parallelize(Array(
-      (Bytes.toBytes("THERMALITO_3/14/14 9:53"))
+      (Bytes.toBytes("THERMALITO_3/14/14 9:50"))
     ))
 
     val conf = HBaseConfiguration.create()

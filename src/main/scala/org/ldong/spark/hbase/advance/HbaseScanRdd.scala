@@ -1,10 +1,13 @@
 package org.ldong.spark.hbase.advance
+
 import org.apache.hadoop.hbase.client.Scan
 import org.apache.hadoop.hbase.util.Bytes
 import org.apache.hadoop.hbase.{HBaseConfiguration, HConstants}
 import org.apache.spark.{SparkConf, SparkContext}
 import org.ldong.spark.common.PropertiesUtil
 import org.ldong.spark.hbase.tools.HBaseContext
+
+import scala.collection.JavaConversions
 
 
 /**
@@ -17,12 +20,12 @@ object HbaseScanRdd {
 
     val tableName = "sensor"
 
-    val sparkConf = new SparkConf().setAppName("HBaseDistributedScanExample " + tableName ).setMaster("local[2]")
+    val sparkConf = new SparkConf().setAppName("HBaseDistributedScanExample " + tableName).setMaster("local[2]")
     val sc = new SparkContext(sparkConf)
 
     val conf = HBaseConfiguration.create()
     val zookeeper = PropertiesUtil.getValue("ZOOKEEPER_ADDRESS")
-    conf.set(HConstants.ZOOKEEPER_QUORUM,zookeeper)
+    conf.set(HConstants.ZOOKEEPER_QUORUM, zookeeper)
 
     var scan = new Scan()
     scan.setCaching(100)
@@ -31,8 +34,54 @@ object HbaseScanRdd {
 
     val hbaseContext = new HBaseContext(sc, conf)
 
-    var getRdd = hbaseContext.hbaseScanRDD( tableName, scan)
-    getRdd.foreach(v => println(Bytes.toString(v._1)))
-    getRdd.collect.foreach(v => println(Bytes.toString(v._1)))
+    var getRdd = hbaseContext.hbaseScanRDD(tableName, scan)
+
+
+    val rowKeyRdd = getRdd.map(tuple => tuple._1)
+    rowKeyRdd.foreach(key => println(Bytes.toString(key)))
+
+    //method one
+    //    val resultRdd = getRdd.map(tuple => tuple._2).foreach { arraysList =>
+    //      var columnArrayNumPerKey = 0
+    //      while (columnArrayNumPerKey < arraysList.size()) {
+    //        val array = arraysList.get(columnArrayNumPerKey)
+    //        val cf = Bytes.toString(array._1)
+    //        val col = Bytes.toString(array._2)
+    //        val value = Bytes.toString(array._3)
+    //        println(cf + "_" + col + "_" + value)
+    //        columnArrayNumPerKey += 1
+    //        println("column array number for per row key is " + columnArrayNumPerKey)
+    //      }
+    //    }
+
+    //method two(just convert java list to scala and use <- to interator)
+    //    val resultRdd1 = getRdd.map(tuple => tuple._2).foreach { arraysList =>
+    //      var columnArrayNumPerKey = 0
+    //      val scalaArraysList = JavaConversions.asScalaBuffer(arraysList)
+    //      for(array <- scalaArraysList){
+    //        val cf = Bytes.toString(array._1)
+    //        val col = Bytes.toString(array._2)
+    //        val value = Bytes.toString(array._3)
+    //        println(cf + "_" + col + "_" + value)
+    //        columnArrayNumPerKey += 1
+    //        println("column array number for per row key  is " + columnArrayNumPerKey)
+    //      }
+    //    }
+
+    val resultRdd2 = getRdd.map(tuple => tuple._2).foreach { arraysList =>
+      var columnArrayNumPerKey = 0
+      val scalaArraysList = JavaConversions.asScalaBuffer(arraysList)
+      scalaArraysList.foreach { array =>
+        val cf = Bytes.toString(array._1)
+        val col = Bytes.toString(array._2)
+        val value = Bytes.toString(array._3)
+        println(cf + "_" + col + "_" + value)
+        columnArrayNumPerKey += 1
+        println("column array number for per row key  is " + columnArrayNumPerKey)
+      }
+    }
+
+
+    sc.stop()
   }
 }

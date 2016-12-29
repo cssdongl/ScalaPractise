@@ -43,12 +43,12 @@ object HBaseSensorStream extends Serializable {
       val rowkey = sensor.resid + "_" + dateTime
       val put = new Put(Bytes.toBytes(rowkey))
       // add to column family data, column  data values to put object 
-      put.addColumn(cfDataBytes, colHzBytes, Bytes.toBytes(sensor.hz))
-      put.addColumn(cfDataBytes, colDispBytes, Bytes.toBytes(sensor.disp))
-      put.addColumn(cfDataBytes, colFloBytes, Bytes.toBytes(sensor.flo))
-      put.addColumn(cfDataBytes, colSedBytes, Bytes.toBytes(sensor.sedPPM))
-      put.addColumn(cfDataBytes, colPsiBytes, Bytes.toBytes(sensor.psi))
-      put.addColumn(cfDataBytes, colChlBytes, Bytes.toBytes(sensor.chlPPM))
+      put.addColumn(cfDataBytes, colHzBytes, Bytes.toBytes(String.valueOf(sensor.hz)))
+      put.addColumn(cfDataBytes, colDispBytes, Bytes.toBytes(String.valueOf(sensor.disp)))
+      put.addColumn(cfDataBytes, colFloBytes, Bytes.toBytes(String.valueOf(sensor.flo)))
+      put.addColumn(cfDataBytes, colSedBytes, Bytes.toBytes(String.valueOf(sensor.sedPPM)))
+      put.addColumn(cfDataBytes, colPsiBytes, Bytes.toBytes(String.valueOf(sensor.psi)))
+      put.addColumn(cfDataBytes, colChlBytes, Bytes.toBytes(String.valueOf(sensor.chlPPM)))
       return (new ImmutableBytesWritable(Bytes.toBytes(rowkey)), put)
     }
     // convert psi alert to an HBase put object
