@@ -1,8 +1,8 @@
-package org.ldong.spark.sparkstreaming.redis.utils;
+package org.ldong.spark.streaming.redis.utils;
 
 
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
-import org.ldong.spark.sparkstreaming.redis.constant.RedisConfig;
+import org.ldong.spark.streaming.redis.constant.RedisConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;

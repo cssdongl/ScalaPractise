@@ -1,7 +1,7 @@
-package org.ldong.spark.sparkstreaming.redis
+package org.ldong.spark.streaming.redis
 
 import org.ldong.spark.common.PropertiesUtil
-import org.ldong.spark.sparkstreaming.redis.utils.JedisUtil
+import org.ldong.spark.streaming.redis.utils.JedisUtil
 import redis.clients.jedis._
 
 import scala.collection.JavaConversions

@@ -1,4 +1,4 @@
-package org.ldong.spark.sparkstreaming.redis
+package org.ldong.spark.streaming.redis
 
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig
 import redis.clients.jedis.JedisPool

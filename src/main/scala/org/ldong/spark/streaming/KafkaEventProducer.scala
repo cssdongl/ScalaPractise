@@ -1,4 +1,4 @@
-package org.ldong.spark.sparkstreaming
+package org.ldong.spark.streaming
 
 import java.util.{Properties, Random}
 

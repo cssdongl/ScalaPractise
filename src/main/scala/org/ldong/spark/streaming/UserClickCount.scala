@@ -1,10 +1,10 @@
-package org.ldong.spark.sparkstreaming
+package org.ldong.spark.streaming
 
 import net.sf.json.JSONObject
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.apache.spark.streaming.kafka.KafkaUtils
-import org.ldong.spark.sparkstreaming.redis.RedisClient
+import org.ldong.spark.streaming.redis.RedisClient
 import kafka.serializer._
 import org.ldong.spark.common.PropertiesUtil
 

@@ -1,4 +1,4 @@
-package org.ldong.spark.sparkstreaming.redis.constant;
+package org.ldong.spark.streaming.redis.constant;
 
 /**
  * @author cssdongl@gmail.com
