@@ -24,7 +24,6 @@ object UserClickCount {
     // Create a StreamingContext with the given master URL
     val conf = new SparkConf().setMaster(masterUrl).setAppName("UserClickCountStat")
     val ssc = new StreamingContext(conf, Seconds(5))
-
     // Kafka configurations
     val topics = Set("user_events")
     val brokers = PropertiesUtil.getValue("BROKER_ADDRESS")

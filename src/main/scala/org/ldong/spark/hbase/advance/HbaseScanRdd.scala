@@ -87,6 +87,21 @@ object HbaseScanRdd {
         (key,value)
       }
     }
+
+    //hbaseRDD type => (RowKey, List[(columnFamily, columnQualifier, Value)]
+    val resultRdd4 = hbaseRdd.map { case (tuple1, tuple2) =>
+      val rowKey = Bytes.toString(tuple1)
+      val scalaArraysList = JavaConversions.asScalaBuffer(tuple2)
+      val sb = new StringBuilder
+      scalaArraysList.foreach { array =>
+        val result = Array(Bytes.toString(array._1),
+          Bytes.toString(array._2), Bytes.toString(array._3))
+        if (scalaArraysList.last != array) sb.append(result.mkString("_")).append("\t")
+        else sb.append(result.mkString("_"))
+      }
+      (rowKey, sb.toString())
+    }.foreach(println)
+
     sc.stop()
   }
 }

@@ -28,7 +28,6 @@ object HBaseReadWrite extends Serializable{
   def main(args: Array[String]) {
     val sparkConf = new SparkConf().setAppName("HBaseTest").setMaster("local[2]")
     val sc = new SparkContext(sparkConf)
-
     val conf = HBaseConfiguration.create()
     val zookeeper = PropertiesUtil.getValue("ZOOKEEPER_ADDRESS")
     conf.set(HConstants.ZOOKEEPER_QUORUM,zookeeper)
@@ -61,6 +60,8 @@ object HBaseReadWrite extends Serializable{
     jobConfig.setOutputFormat(classOf[TableOutputFormat])
     jobConfig.set(TableOutputFormat.OUTPUT_TABLE, tableName)
     keyStatsRDD.map { case (k, v) => convertToPut(k, v) }.saveAsHadoopDataset(jobConfig)
+
+    sc.stop()
 
   }
   def convertToPut(key: String, stats: StatCounter): (ImmutableBytesWritable, Put) = {
