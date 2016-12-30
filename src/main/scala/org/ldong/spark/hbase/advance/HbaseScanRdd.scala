@@ -27,16 +27,13 @@ object HbaseScanRdd {
     val zookeeper = PropertiesUtil.getValue("ZOOKEEPER_ADDRESS")
     conf.set(HConstants.ZOOKEEPER_QUORUM, zookeeper)
 
-    var scan = new Scan()
+    val scan = new Scan()
     scan.setCaching(100)
     scan.setStartRow(Bytes.toBytes("THERMALITO_3/14/14 9:20"))
     scan.setStopRow(Bytes.toBytes("THERMALITO_3/14/14 9:59"))
 
     val hbaseContext = new HBaseContext(sc, conf)
-
-    var hbaseRdd = hbaseContext.hbaseScanRDD(tableName, scan)
-
-
+    val hbaseRdd = hbaseContext.hbaseScanRDD(tableName, scan)
     val rowKeyRdd = hbaseRdd.map(tuple => tuple._1)
     rowKeyRdd.foreach(key => println(Bytes.toString(key)))
 
