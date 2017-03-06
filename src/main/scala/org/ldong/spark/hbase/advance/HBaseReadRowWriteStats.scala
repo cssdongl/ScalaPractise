@@ -9,24 +9,16 @@
 
 package org.ldong.spark.hbase.advance
 
-import scala.reflect.runtime.universe
-
 import org.apache.hadoop.hbase.HBaseConfiguration
-import org.apache.hadoop.hbase.client.Put
-import org.apache.hadoop.hbase.client.Result
+import org.apache.hadoop.hbase.client.{Put, Result}
 import org.apache.hadoop.hbase.io.ImmutableBytesWritable
 import org.apache.hadoop.hbase.mapred.TableOutputFormat
 import org.apache.hadoop.hbase.mapreduce.TableInputFormat
 import org.apache.hadoop.hbase.util.Bytes
 import org.apache.hadoop.mapred.JobConf
-import org.apache.spark.SparkConf
-import org.apache.spark.SparkContext
-import org.apache.spark.rdd.PairRDDFunctions
+import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.functions.avg
-import org.apache.hadoop.mapreduce.Job
-import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat
-import org.apache.hadoop.fs.Path
 
 object HBaseReadRowWriteStats {
 
