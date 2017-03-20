@@ -3,6 +3,7 @@ package org.ldong.spark.machineLearning
 import org.apache.spark.mllib.recommendation.Rating
 import org.apache.spark.mllib.recommendation.ALS
 import org.apache.spark.{SparkConf, SparkContext}
+import org.apache.spark.mllib.recommendation.MatrixFactorizationModel
 
 /**
   * @author cssdongl@gmail.com
@@ -30,7 +31,7 @@ object ExtractFeature {
 
       val lambda:Double = 0.01
 
-      val model = ALS.train(ratings,ranks,iterators,lambda)
+//      val model = ALS.train(ratings,ranks,iterators,lambda)
 
       sc.stop()
 
