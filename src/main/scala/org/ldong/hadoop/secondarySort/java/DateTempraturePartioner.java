@@ -1,8 +1,8 @@
-package org.ldong.spark.mr.secondarySort.java;
+package org.ldong.hadoop.secondarySort.java;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Partitioner;
-import org.ldong.spark.mr.secondarySort.java.entity.DateTempaturePair;
+import org.ldong.hadoop.secondarySort.java.entity.DateTempaturePair;
 import java.lang.Math;
 
 /**

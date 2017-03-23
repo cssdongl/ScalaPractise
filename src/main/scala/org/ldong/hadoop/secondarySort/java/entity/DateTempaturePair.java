@@ -1,4 +1,4 @@
-package org.ldong.spark.mr.secondarySort.java.entity;
+package org.ldong.hadoop.secondarySort.java.entity;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;

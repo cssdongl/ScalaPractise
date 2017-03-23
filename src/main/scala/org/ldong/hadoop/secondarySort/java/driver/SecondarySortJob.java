@@ -1,4 +1,4 @@
-package org.ldong.spark.mr.secondarySort.java.driver;
+package org.ldong.hadoop.secondarySort.java.driver;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
@@ -10,11 +10,11 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
-import org.ldong.spark.mr.secondarySort.java.DateTempraturePartioner;
-import org.ldong.spark.mr.secondarySort.java.DateYearMonthGrouper;
-import org.ldong.spark.mr.secondarySort.java.entity.DateTempaturePair;
-import org.ldong.spark.mr.secondarySort.java.mapper.SecondarySortMapper;
-import org.ldong.spark.mr.secondarySort.java.reducer.SecondarySortReducer;
+import org.ldong.hadoop.secondarySort.java.DateTempraturePartioner;
+import org.ldong.hadoop.secondarySort.java.DateYearMonthGrouper;
+import org.ldong.hadoop.secondarySort.java.entity.DateTempaturePair;
+import org.ldong.hadoop.secondarySort.java.mapper.SecondarySortMapper;
+import org.ldong.hadoop.secondarySort.java.reducer.SecondarySortReducer;
 
 /**
  * @author cssdongl@gmail.com

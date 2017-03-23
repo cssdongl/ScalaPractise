@@ -1,9 +1,9 @@
-package org.ldong.spark.mr.secondarySort.java.mapper;
+package org.ldong.hadoop.secondarySort.java.mapper;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
-import org.ldong.spark.mr.secondarySort.java.entity.DateTempaturePair;
+import org.ldong.hadoop.secondarySort.java.entity.DateTempaturePair;
 
 import java.io.IOException;
 
