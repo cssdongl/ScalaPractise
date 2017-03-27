@@ -32,6 +32,7 @@ object MultiColumnTopN {
           sortedMap.takeRight(topN.value)
         }
       }
+      //scala sortedMap default sort order is asc,so take the right N values
       sortedMap.takeRight(topN.value).toIterator
     }
 
