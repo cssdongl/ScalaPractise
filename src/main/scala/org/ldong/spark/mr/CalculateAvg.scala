@@ -20,5 +20,6 @@ object CalculateAvg extends App {
     (accu: (Int, Int), v) => (accu._1 + v, accu._2 + 1),
     (accu1: (Int, Int), accu2: (Int, Int)) => (accu1._1 + accu2._1, accu1._2 + accu2._2)
   ).mapValues(x => (x._1 / x._2)).collect().foreach(println)
+
   sc.stop()
 }
