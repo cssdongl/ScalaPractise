@@ -9,15 +9,15 @@ import org.apache.spark.{SparkConf, SparkContext}
   * @version V1.0
   */
 object SparkMergeMultiSmallFiles extends App {
-  val conf = new SparkConf().setAppName("test small files performance").setMaster("yarn-cluster")
+  val conf = new SparkConf().setAppName("test small files performance").setMaster("local[5]")
   val sc = new SparkContext(conf)
   val sqlContext = new SQLContext(sc)
 
-  val data2 = sc.wholeTextFiles("/jjbox/open/2017/*/*/*/*txt",5)
+  val data2 = sc.wholeTextFiles("/jjbox/open/2017/*/*/*/*txt",30)
 
-  val valuesRdd = data2.values
+  val valuesRdd = data2.values.flatMap(x=> x.split("\n"))
 
-  val jsons = sqlContext.jsonRDD(valuesRdd)
+    val jsons = sqlContext.jsonRDD(valuesRdd)
 
   jsons.registerTempTable("device_open_normal")
 
