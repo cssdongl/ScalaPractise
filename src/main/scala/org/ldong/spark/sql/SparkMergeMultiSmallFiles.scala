@@ -27,7 +27,7 @@ object SparkMergeMultiSmallFiles extends App {
 
   val joinsResult = sqlContext.sql("SELECT DISTINCT a.devicewifimac, a.deviceusid FROM (SELECT DISTINCT don.devicewifimac, don.deviceusid, substr(don.opentime, 1, 10) AS time1 FROM device_open_normal don WHERE don.deviceusid NOT IN ('0123456789abcdef', '0123456789ABCDEF') ) a JOIN (SELECT DISTINCT don.devicewifimac, don.deviceusid, substr(don.opentime, 1, 10) AS time2 FROM device_open_normal don WHERE don.deviceusid = '0123456789abcdef' OR don.deviceusid = '0123456789ABCDEF' ) b ON a.devicewifimac = b.devicewifimac WHERE a.time1 < b.time2")
 
-  joinsResult.toJavaRDD.coalesce(1, true).saveAsTextFile("/test/dongliang/sparkResults")
+  joinsResult.rdd.coalesce(1, false).saveAsTextFile("/test/dongliang/sparkResults")
 
   sc.stop()
 }
