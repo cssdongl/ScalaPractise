@@ -1,27 +1,29 @@
 package org.ldong.spark.sql
 
-import org.apache.hadoop.io.{LongWritable, Text}
-import org.apache.hadoop.mapred.lib.CombineTextInputFormat
 import org.apache.spark.sql.SQLContext
 import org.apache.spark.{SparkConf, SparkContext}
 
 /**
   * @author cssdongl@gmail.com
-  * @date 2016/12/17 11:35  
+  * @date 2017/4/28 9:48  
   * @version V1.0
   */
-object SparkMergeMultiSmallFiles extends App {
+object SparkCombineMultiSmallFiles extends App{
+
   val conf = new SparkConf().setAppName("test small files performance").setMaster("yarn-client")
   val sc = new SparkContext(conf)
   val sqlContext = new SQLContext(sc)
 
-  //method one
+  //methond two
+//  val lines1 = sc.newAPIHadoopFile("/jjbox/open/2017/*/*/*/*", classOf[CombineTextInputFormat], classOf[LongWritable], classOf[Text])
 
-  val data2 = sc.wholeTextFiles("/jjbox/open/2017/*/*/*/*txt", 20)
+  val lines = sc.textFile("/jjbox/open/2017/*/*/*/*").coalesce(100, false)
 
-  val valuesRdd = data2.values.flatMap(x => x.split("\n"))
+//  val repartitionLines = lines.repartition(20)
 
-  val jsons = sqlContext.jsonRDD(valuesRdd)
+  lines.take(5).foreach(println)
+
+  val jsons = sqlContext.jsonRDD(lines)
 
   jsons.registerTempTable("device_open_normal")
 
@@ -30,4 +32,5 @@ object SparkMergeMultiSmallFiles extends App {
   joinsResult.toJavaRDD.coalesce(1, true).saveAsTextFile("/test/dongliang/sparkResults")
 
   sc.stop()
+
 }
