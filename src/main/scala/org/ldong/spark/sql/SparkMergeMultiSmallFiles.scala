@@ -15,6 +15,8 @@ object SparkMergeMultiSmallFiles extends App {
   val sc = new SparkContext(conf)
   val sqlContext = new SQLContext(sc)
 
+//  val hiveContxt = new HiveContext(sc)
+
   //method one
 
   val data2 = sc.wholeTextFiles("/jjbox/open/2017/*/*/*/*txt", 20)
