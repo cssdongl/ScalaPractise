@@ -8,7 +8,7 @@ import org.apache.spark.{SparkConf, SparkContext}
   * @date 2017/4/28 9:48  
   * @version V1.0
   */
-object SparkCombineMultiSmallFiles extends App{
+object SparkQueryCombineFields extends App{
 
   val conf = new SparkConf().setAppName("test small files performance").setMaster("yarn-client")
   val sc = new SparkContext(conf)
@@ -27,11 +27,10 @@ object SparkCombineMultiSmallFiles extends App{
 
   jsons.registerTempTable("device_open_normal")
 
-  val joinsResult = sqlContext.sql("SELECT DISTINCT a.devicewifimac, a.deviceusid FROM (SELECT DISTINCT don.devicewifimac, don.deviceusid, substr(don.opentime, 1, 10) AS time1 FROM device_open_normal don WHERE don.deviceusid NOT IN ('0123456789abcdef', '0123456789ABCDEF') ) a JOIN (SELECT DISTINCT don.devicewifimac, don.deviceusid, substr(don.opentime, 1, 10) AS time2 FROM device_open_normal don WHERE don.deviceusid = '0123456789abcdef' OR don.deviceusid = '0123456789ABCDEF' ) b ON a.devicewifimac = b.devicewifimac WHERE a.time1 < b.time2")
+  val joinsResult = sqlContext.sql("select don.deviceusid, concat_ws('_',collect_set(don.devicewifimac)) as deviceWifiMacs from device_open_normal don where don.deviceusid <> '0123456789abcdef' and substr(don.opentime, 1, 10) > '2017-01-15' group by don.deviceusid")
 
   joinsResult.rdd.coalesce(1,false).saveAsTextFile("/test/dongliang/sparkResults")
 
-//  joinsResult.rdd.coalesce(1, true).saveAsTextFile("/test/dongliang/sparkResults")
 
   sc.stop()
 
